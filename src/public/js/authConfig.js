@@ -11,7 +11,17 @@ function showRegisterForm() {
   });
   $(".error").removeClass("alert alert-danger").html("");
 }
+function showRegisterHost(){
+  $(".loginBox").fadeOut("fast", function () {
+    $(".registerHost").fadeIn("fast");
+    $(".login-footer").fadeOut("fast", function () {
+      $(".register-footer").fadeIn("fast");
+    });
+    $(".modal-title").html("Đăng ký tài khoản chu phong");
+  });
+  $(".error").removeClass("alert alert-danger").html("");
 
+}
 function showLoginForm() {
   $("#loginModal .registerBox").fadeOut("fast", function () {
     $(".loginBox").fadeIn("fast");
@@ -37,3 +47,10 @@ function openRegisterModal() {
     showRegisterForm();
   }, 230);
 }
+function openRegisterHost (){
+  setTimeout(function () {
+    $("#loginModal").modal("show");
+    showRegisterHost();
+  }, 230);
+}
+ 
