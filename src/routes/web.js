@@ -11,7 +11,10 @@ let initRoutes = (app) => {
   router.post("/register",auth.isCheckLogout,authVal.register, auth.postRegister);
   router.get("/verify/:token", auth.getVerifyToken);
   router.get("/logout",auth.isCheckLogin,auth.getLogout);
-  router.post("/login",auth.isCheckLogout, passport.authenticate('local', { failureRedirect: '/login',successRedirect:"/home",successFlash:true,failureFlash:true }),loginLocal.initPassportLocal)
+  router.post("/login",auth.isCheckLogout, passport.authenticate('local', { failureRedirect: '/login-register',successRedirect:"/home",successFlash:true,failureFlash:true }),loginLocal.initPassportLocal)
+  router.get("host",(req,res)=>{
+    res.render
+  })
   return app.use("/", router);
 };
 module.exports = initRoutes;
