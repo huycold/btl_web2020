@@ -8,9 +8,7 @@ var initPassportLocal = ()=>{
         passwordField:"password",
         passReqToCallback:true
     },async(req,email,password,done)=>{
-        var account = req.account;
-
-        console.log(account)
+      
         let user =await UserModel.findByEmail(email)
         try {if(!user){
             return done(null,false,req.flash("errors","khong tim thay email"))
@@ -28,6 +26,7 @@ var initPassportLocal = ()=>{
            catch(error){
                return done(null,false,req.flash("errors","loi server"))
            }
+    
        
            
         
