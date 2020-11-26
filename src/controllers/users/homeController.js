@@ -1,6 +1,6 @@
 import userModel from "./../../model/userModel"
 const homeController = (req, res) => {
-  console.log(req.user.role)
+ 
 if(req.user.role ==="user")
 {
   res.render("main/master",{
@@ -9,7 +9,7 @@ if(req.user.role ==="user")
  
 }
 else if(req.user.role ==="admin"){
-  res.send("hello admin")
+  res.render("main/masterHost")
 }
 
   

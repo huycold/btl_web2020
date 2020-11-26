@@ -3,6 +3,7 @@ import passport from "passport";
 import {loginLocal} from "./../controllers/users/passport/index"
 import { home, auth } from "../controllers/users/index";
 import { authVal } from "./../validation/index";
+import postController from "./../controllers/posts/postController"
 loginLocal.initPassportLocal()
 let router = express.Router();
 let initRoutes = (app) => {
@@ -15,6 +16,7 @@ let initRoutes = (app) => {
   router.get("host",(req,res)=>{
     res.render
   })
+  router.get("/user",postController)
   return app.use("/", router);
 };
 module.exports = initRoutes;

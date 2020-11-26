@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Awesome Chat</title>
+    <title>EasyAccomo</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -43,8 +43,17 @@
     <!-- content -->
     <div class="container-fluid">
       <div class="row content">
-        <%- include("home/sections/leftSidenav")%>\ <%-
-        include("home/sections/rightSidenav")%>
+        <%- include("home/sections/leftSidenav")%>
+        <div class="container" id="container">
+          </div>  
+    <div class="loading">
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+  </div>
+<!--         
+        <%-
+        include("home/sections/rightSidenav")%> -->
       </div>
     </div>
     <!--Libraries-->
@@ -60,7 +69,61 @@
     <script src="/bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="/bower_components/photoset-grid/jquery.photoset-grid.min.js"></script>
     <script src="/bower_components/jquery-colorbox/jquery.colorbox-min.js"></script>
-
+    <script>
+      const container = document.getElementById('container');
+  const loading = document.querySelector('.loading');
+  
+  getPost();
+  getPost();
+  getPost();
+  getPost();
+  window.addEventListener('scroll', () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    
+    console.log( { scrollTop, scrollHeight, clientHeight });
+    
+    if(clientHeight + scrollTop >= scrollHeight - 5) {
+      // show the loading animation
+      showLoading();
+    }
+  });
+  
+  function showLoading() {
+    loading.classList.add('show');
+    
+    // load more data
+    setTimeout(getPost, 1000)
+  }
+  
+  async function getPost() {
+    const postResponse = await fetch(`http://localhost:3000/user`);
+    const postData = await postResponse.json();
+    
+    const userResponse = await fetch('https://randomuser.me/api');
+    const userData = await userResponse.json();
+    
+    const data = { post: postData, user: userData.results[0] };
+    
+    addDataToDOM(data);
+  }
+  
+  function getRandomNr() {
+    return Math.floor(Math.random() * 100) + 1;
+  }
+  
+  function addDataToDOM(data) {
+    
+    const postElement = document.createElement('div');
+    postElement.classList.add('blog-post');
+    postElement.innerHTML = `
+      <h2 class="title">${data[0].username}</h2>
+     
+    `;
+    container.appendChild(postElement);
+    
+    loading.classList.remove('show');
+  }
+  </script>
     <!-- My js-->
     <script src="/js/mainConfig.js"></script>
     <script src = "/js/findUserContact.js"></script>
