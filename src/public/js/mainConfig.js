@@ -113,7 +113,14 @@ function showButtonGroupChat() {
     }
   });
 }
-
+function flashMasterNotify (){
+  let notify =$(".master-success-message").text()
+  if(notify.length){
+    alertify.notify(notify,"success",7)
+  }
+  console.log(notify)
+ 
+}
 function addFriendsToGroup() {
   $('ul#group-chat-friends').find('div.add-user').bind('click', function() {
     let uid = $(this).data('uid');
@@ -143,6 +150,7 @@ function cancelCreateGroup() {
 }
 
 $(document).ready(function() {
+
   // Hide số thông báo trên đầu icon mở modal contact
   showModalContacts();
 
@@ -171,4 +179,5 @@ $(document).ready(function() {
 
   // Action hủy việc tạo nhóm trò chuyện
   cancelCreateGroup();
+  flashMasterNotify ()
 });
