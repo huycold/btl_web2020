@@ -1,7 +1,7 @@
 import express from "express";
 import passport from "passport";
 import {loginLocal} from "./../controllers/users/passport/index"
-import { home, auth } from "../controllers/users/index";
+import { home, auth,user } from "../controllers/users/index";
 import { authVal } from "./../validation/index";
 import postController from "./../controllers/posts/postController"
 loginLocal.initPassportLocal()
@@ -13,9 +13,10 @@ let initRoutes = (app) => {
   router.get("/verify/:token", auth.getVerifyToken);
   router.get("/logout",auth.isCheckLogin,auth.getLogout);
   router.post("/login",auth.isCheckLogout, passport.authenticate('local', { failureRedirect: '/login-register',successRedirect:"/home",successFlash:true,failureFlash:true }),loginLocal.initPassportLocal)
-  router.get("host",(req,res)=>{
+  router.get("/host",(req,res)=>{
     res.render
   })
+  router.put("/user/update-avatar",auth.isCheckLogin,user.updateAvatar)
   router.get("/user",postController)
   return app.use("/", router);
 };
