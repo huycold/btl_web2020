@@ -1,10 +1,23 @@
-const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
-
-console.log(beasts.indexOf('bison',2));
-// expected output: 1
-
-// start from index 2
-// console.log(beasts.indexOf('bison', 2));
-// // expected output: 4
-
-// console.log(beasts.indexOf('bison',3));
+var express = require("express")
+var  app = express()
+var session = require("express-session")
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
+ 
+// Access the session as req.session
+app.get('/', function(req, res, next) {
+    console.log(req.sessionID)
+  if (req.session.views) {
+    
+    req.session.views++
+    res.setHeader('Content-Type', 'text/html')
+    res.write('<p>views: ' + req.session.views + '</p>')
+    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 1000) + 's</p>')
+    res.end()
+  } else {
+    req.session.views = 1
+    res.end('welcome to the session demo. refresh!')
+  }
+})
+app.listen(3000,()=>{
+    console.log("server running")
+})

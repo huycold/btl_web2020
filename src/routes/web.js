@@ -2,7 +2,7 @@ import express from "express";
 import passport from "passport";
 import {loginLocal} from "./../controllers/users/passport/index"
 import { home, auth,user } from "../controllers/users/index";
-import { authVal } from "./../validation/index";
+import { authVal ,userVal} from "./../validation/index";
 import postController from "./../controllers/posts/postController"
 loginLocal.initPassportLocal()
 let router = express.Router();
@@ -17,6 +17,7 @@ let initRoutes = (app) => {
     res.render
   })
   router.put("/user/update-avatar",auth.isCheckLogin,user.updateAvatar)
+  router.put("/user/update-info",auth.isCheckLogin,userVal.updateInfo,user.updateInfo)
   router.get("/user",postController)
   return app.use("/", router);
 };

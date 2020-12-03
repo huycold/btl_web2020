@@ -1,6 +1,7 @@
 let userAvatar = null;
 let userInfo ={}
 let originAvatar = null
+let originUserInfo = {}
 function updateUserInfo (){
     $("#input-change-avatar").bind("change",function(){
         let fileData = $("#input-change-avatar").prop("files")[0]
@@ -33,60 +34,104 @@ function updateUserInfo (){
     $("#input-change-username").bind("change",function(){
         userInfo.username = $(this).val()
     })
-    $("#input-change-gender-male").bind("change",function(){
-        userInfo.gender = $(this).val()
-    })
-    $("#input-change-female").bind("change",function(){
-        userInfo.female = $(this).val()
-    })
+  
     $("#input-change-address").bind("change",function(){
-        userInfo.address = $(this).val()
+        userInfo.address = $("#input-change-address").val()
     })
     $("#input-change-phone").bind("change",function(){
         userInfo.phone = $(this).val()
     })
 }
+function callUpdateAvatar(){
+    $.ajax({
+        url :"/user/update-avatar",
+        type:"put",
+        cache:false,
+        contentType:false,
+        processData:false,
+        data:userAvatar,
+        success:function(result){
+       
+       $(".user-modal-update-success").find("span").text("cap nhap thanh cong")
+       $(".user-modal-update-success").css("display","block")
+       $("#navbar-avatar").attr("src",result.imageSrc)
+        },
+        error:function(error){
+             console.log("loi")
+             $(".user-modal-update-errors").find("span").text("loi anh")
+             $(".user-modal-update-errros").css("display","block")
+            
+          
+            //  originAvatarSrc = result.imageSrc
+          
+            //  console.log(error)
+            //  $("#input-btn-cancel-update-user").click()
+        }
+    })
+}
+function callUpdateUserInfo (){
+   
+    $.ajax({
+        url :"/user/update-info",
+        type:"put",
+        
+       data:userInfo,
+        success:function(result){
+          
+       
+        },
+        error:function(error){
+            console.log("cap nhap sai")
+            $(".user-modal-update-success").find("span").text("cap nhap thanh cong")
+            $(".user-modal-update-success").css("display","block")
+              originUserInfo = Object.assign(originUserInfo,userInfo)
+              console.log(originUserInfo)
+              $("#navbar-username").text(originUserInfo.username)
+          
+        }
+    })
+}
 $(document).ready(function(){
-    updateUserInfo()
+  
+ 
+
     originAvatar  = $("#user-modal-avatar").attr("src")
+    originUserInfo ={
+       username: $("#input-change-username").val(),
+    //    gender : ($("#input-change-gender-male").is("checked"))?$("#input-change-gender-male").val(): $("#input-change-gender-female").val(),
+       address: $("#input-change-address").val(),
+       phone : $("#input-change-phone").val()
+    }
+   
+    updateUserInfo()
+   
    $("#input-btn-update-user").bind("click",function(){
     //    console.log(userAvatar)
-    //    console.log(userInfo)
+
+  
+
+
        if(!userAvatar && $.isEmptyObject(userInfo)){
-           alert(" bab phai thay doi ")
+           alert(" ban phai thay doi ")
            return false;
        }
-       $.ajax({
-           url :"/user/update-avatar",
-           type:"put",
-           cache:false,
-           contentType:false,
-           processData:false,
-           data:userAvatar,
-           success:function(result){
-          
-            $("#user-modal-update-success").find("span").text(result.message)
-            $("#user-modal-update-success").css("display","block")
-            $("#navbar-avatar").attr("src",result.imageSrc)
-         
-            originAvatarSrc = result.imageSrc
-            alert("ban da cap nhap thanh cong")
-            console.log(result)
-           },
-           error:function(error){
-                $("#user-modal-update-errors").find("span").text(error.responseText)
-                $("#user-modal-update-errors").css("display","block")
-
-           }
-       })
+      
+        callUpdateAvatar()
+      
+        callUpdateUserInfo ()
+     
+   
+      
    })
    $("#input-btn-cancel-update-user").bind("click",function(){
+
     userAvatar = null;
    userInfo ={}
+   $("#input-change-username").val(originUserInfo.username)
+$("#input-change-address").val(originUserInfo.address)
+$("#input-change-phone").val(originUserInfo.phone)
    $("#user-modal-avatar").attr("src",originAvatar)
-  
-   console.log(userAvatar)
-   console.log(userInfo)
+ 
    })
  
 })

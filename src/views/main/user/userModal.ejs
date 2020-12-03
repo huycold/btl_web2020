@@ -49,7 +49,7 @@
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
               <div class="form-control" disabled>
-                trungquandev@trungquandev.com
+                <%=  user.email%>
               </div>
             </div>
           </div>
@@ -99,28 +99,28 @@
             <label class="col-lg-3 control-label">Địa chỉ:</label>
             <div class="col-lg-8">
               <input
-              id="
-                input-change-address"
-                class="form-control"
-                type="text"
-                name="address"
-                value="Hà Nội, Việt Nam"
-              />
-            </div>
+              class="form-control"
+              type="text"
+              name="address"
+              id ="input-change-address"
+              value="<%- user.address%>"
+            />
+             
+            </div> 
           </div>
-          <div class="form-group">
+          <div class="form-group" >
             <label class="col-lg-3 control-label"
               >Số điện thoại:</label
             >
             <div class="col-lg-8">
+           
               <input
-              id="
-                input-change-phone"
-                class="form-control"
-                type="text"
-                name="phone"
-                value="0123456789"
-              />
+              class="form-control"
+              type="text"
+              name="phone"
+              id ="input-change-phone"
+              value="<%- user.phone%>"
+            />
             </div>
           </div>
           <div class="form-group">
@@ -146,16 +146,16 @@
   </div>
   <div id="password-profile" class="tab-pane fade">
     <div class="col-md-9 personal-info">
-      <div class="alert alert-danger alert-dismissable">
+      <div class="alert alert-danger alert-dismissable user-modal-password-update-success">
         <a class="panel-close close" data-dismiss="alert">×</a>
-        Update password error example<br />
-        <!-- <script>openProfilePasswordModal();</script> -->
+<span> update user</span>
+        <!-- <script>openProfileModal();</script> -->
       </div>
 
-      <div class="alert alert-success alert-dismissable">
+      <div class="alert alert-success alert-dismissable user-modal-password-update-errors">
         <a class="panel-close close" data-dismiss="alert">×</a>
-        Update password success example<br />
-        <!-- <script>openProfilePasswordModal();</script> -->
+<span> update errors</span>
+        <!-- <script>openProfileModal();</script> -->
       </div>
 
       <h3>Thay đổi mật khẩu</h3>
@@ -170,7 +170,7 @@
           <label class="col-md-4 control-label">Mật khẩu cũ</label>
           <div class="col-md-8">
             <input
-              class="form-control"
+              class="form-control" id ="curent-password"
               type="password"
               name="current_password"
               placeholder="Enter your curent password..."
@@ -181,7 +181,7 @@
           <label class="col-md-4 control-label">Mật khẩu mới</label>
           <div class="col-md-8">
             <input
-              class="form-control"
+              class="form-control" id ="new-password"
               type="password"
               name="new_password"
               placeholder="Enter new password..."
@@ -194,7 +194,7 @@
           >
           <div class="col-md-8">
             <input
-              class="form-control"
+              class="form-control" id ="confirm-new-password"
               type="password"
               name="confirm_new_password"
               placeholder="Enter confirm new password..."
@@ -206,12 +206,13 @@
           <div class="col-md-8">
             <input
               type="button"
+              id ="input-btn-update-password"
               class="btn btn-primary custom-background-btn-primary"
               value="Lưu lại"
             />
             <span></span>
             <input
-              type="reset"
+              type="reset"id ="input-btn-cancel-update-password"
               class="btn btn-default custom-background-btn-reset"
               value="Hủy bỏ"
             />
