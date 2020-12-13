@@ -12,6 +12,12 @@ let UserSchema = new Schema({
   address: { type: String, default: null },
   avatar: { type: String, default: "avatar-default.jpg" },
   role: { type: String, default: "user" },
+  card :{
+    type:String,default:null
+  },
+  birthday:{
+    type:Date,default:null
+  },
   local: {
     email: { type: String, trim: true },
     password: String,

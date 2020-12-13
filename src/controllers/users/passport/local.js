@@ -10,8 +10,10 @@ var initPassportLocal = ()=>{
     },async(req,email,password,done)=>{
       
         let user =await UserModel.findByEmail(email)
+
         try {if(!user){
             return done(null,false,req.flash("errors","khong tim thay email"))
+           
         }
            if(!user.local.isActive){
                return done(null,false,req.flash("errors","tai khoan chua duoc active"))

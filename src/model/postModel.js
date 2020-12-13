@@ -28,14 +28,11 @@ PostSchema.statics = {
     }
 }
 var PostModel = mongoose.model("post", PostSchema);
-PostModel.create({
-    address:"an thanh",
+// PostModel.create({
+//     address:"van to ",
   
-    publicPlaces:" xa cong",
-}).then((data)=>{
-    console.log(data)
-})
-// UserModel.find().then((data)=>{
+//     publicPlaces:" cong lac",
+// }).then((data)=>{
 //     console.log(data)
 // })
 

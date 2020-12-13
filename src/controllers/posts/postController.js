@@ -1,9 +1,11 @@
-var userModel = require("./../../model/userModel")
+var postModel = require("./../../model/postModel")
 let getPost =(req,res)=>{
-  userModel.find({}).then(data=>{
+  postModel.find({}).then(data=>{
         if(data){
           res.send(data)
         }
     })
 }
-module.exports = getPost
+module.exports = {
+  getPost :getPost
+}
