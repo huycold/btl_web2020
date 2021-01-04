@@ -146,25 +146,19 @@
   </div>
   <div id="password-profile" class="tab-pane fade">
     <div class="col-md-9 personal-info">
-      <div class="alert alert-danger alert-dismissable user-modal-password-update-success">
-        <a class="panel-close close" data-dismiss="alert">×</a>
-<span> update user</span>
-        <!-- <script>openProfileModal();</script> -->
-      </div>
-
-      <div class="alert alert-success alert-dismissable user-modal-password-update-errors">
-        <a class="panel-close close" data-dismiss="alert">×</a>
-<span> update errors</span>
-        <!-- <script>openProfileModal();</script> -->
+      <% if(success !="") { %> <% success.forEach((item)=>{ %>
+       
+        <div class="alert alert-danger"><%- item %></div>
+        <%}); %> <%} %> 
       </div>
 
       <h3>Thay đổi mật khẩu</h3>
       <br />
       <form
         class="form-horizontal"
-        method="post"
-        role="form"
-        action=""
+        method="POST"
+       
+        action="/changePassword"
       >
         <div class="form-group">
           <label class="col-md-4 control-label">Mật khẩu cũ</label>
@@ -205,7 +199,7 @@
           <label class="col-md-4 control-label"></label>
           <div class="col-md-8">
             <input
-              type="button"
+              type="submit"
               id ="input-btn-update-password"
               class="btn btn-primary custom-background-btn-primary"
               value="Lưu lại"
@@ -219,6 +213,9 @@
           </div>
         </div>
       </form>
+   
+    
+      
     </div>
   </div>
 </div>

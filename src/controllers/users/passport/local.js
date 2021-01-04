@@ -18,11 +18,12 @@ var initPassportLocal = ()=>{
            if(!user.local.isActive){
                return done(null,false,req.flash("errors","tai khoan chua duoc active"))
            }
-           let checkPassword = user.comparePassword
+           let checkPassword = await user.comparePassword(password);
+           
            if(!checkPassword){
                return done (null,false,req.flash("errors","sai mat khau"))
            }
-           return done(null,user,req.flash("success","dang nhap thanh cong"))
+           return done(null,user,req.flash("success"," "))
            
         }
            catch(error){

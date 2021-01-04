@@ -115,11 +115,12 @@ function showButtonGroupChat() {
   });
 }
 function flashMasterNotify (){
-  let notify =$(".master-success-message").text()
+  let notify =$("#master-alert").text()
+  console.log(notify)
   if(notify.length){
     alertify.notify(notify,"success",7)
   }
-  console.log(notify)
+ 
  
 }
 function addFriendsToGroup() {
@@ -150,6 +151,7 @@ function cancelCreateGroup() {
   });
 }
 
+
 $(document).ready(function() {
 
   // Hide số thông báo trên đầu icon mở modal contact
@@ -160,7 +162,7 @@ $(document).ready(function() {
 
   // Cấu hình thanh cuộn
   nineScrollLeft();
-  nineScrollRight();
+  // nineScrollRight();
 
   // Bật emoji, tham số truyền vào là id của box nhập nội dung tin nhắn
   enableEmojioneArea("17071995");
@@ -181,4 +183,6 @@ $(document).ready(function() {
   // Action hủy việc tạo nhóm trò chuyện
   cancelCreateGroup();
   flashMasterNotify ()
+ 
+ 
 });

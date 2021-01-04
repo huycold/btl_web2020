@@ -5,14 +5,12 @@ if(req.user.role ==="user")
 {
   res.render("main/master",{
     user:req.user,
-    success:["xin chao ban"],
+    success:["truomn"],
     errors:req.flash("errors")
    });
  
 }
-else if(req.user.role ==="admin"){
-  res.render("hosts/master")
-}
+
 
   
 };

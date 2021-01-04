@@ -12,12 +12,8 @@ let initRoutesHost = (app) => {
 
     router.get("/login-host",host.getLogin)
     router.post("/login-host",host.postLogin)
-
-  
-  
-  
     router.get("/host",host.getRegister)
- 
+    
   
     router.post("/host",hostVal.register,host.postRegister)
     return app.use("/", router);

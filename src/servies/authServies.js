@@ -47,6 +47,7 @@
 import userModel from "../model/userModel";
 import bcrypt from "bcrypt";
 import uuidv4 from "uuid/v4";
+var mongoose = require("mongoose")
 // import {transSuccess} from "./../../lang/vi"
 import sendMail from "./../config/mailer";
 import { transMail } from "./../lang/vi";
@@ -67,6 +68,7 @@ let register = (email, gender, password, protocol, host) => {
     }
     let salt = bcrypt.genSaltSync(saltRounds);
     let userItem = {
+      _id: new mongoose.Types.ObjectId(),
       username: email.split("@")[0],
       gender: gender,
       local: {

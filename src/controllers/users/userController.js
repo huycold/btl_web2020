@@ -3,9 +3,16 @@ import {app} from "./../../config/app"
 import { validationResult } from "express-validator/check";
 import uuidv4 from "uuid/v4"
 import fsExtra from "fs-extra"
-
+import { check } from "express-validator/check";
+import bcrypt from "bcrypt"
 import {user} from "./../../servies/index"
+import UserModel from "./../../model/userModel"
+import passport from "passport"
+import { reject, resolve } from "bluebird";
+import connectFlash from "connect-flash";
+
 let storageAvatar =multer.diskStorage({
+
   destination:(req,file,callback)=>{
       callback(null,"src/public/images/users")
   }  ,
@@ -69,7 +76,68 @@ let updateInfo = async(req,res)=>{
         console.log(error)
     }
 }
+
+let changePassword = (req,res)=>{
+    let errorArray =[];
+    let successArray = [];
+    var current_password = req.body.current_password;
+   
+    var new_password = req.body.new_password
+    var confirm_new_password = req.body.confirm_new_password
+    UserModel.find({}).then(data=>{
+       return new Promise((resolve,reject)=>{
+        bcrypt.compare(current_password,data[0].local.password,async function(error,result){
+            if(result === true) {
+                if(new_password ===confirm_new_password){
+                    if(new_password.length >=6){
+                        const salt = bcrypt.genSaltSync(10);
+                      var password =   bcrypt.hashSync(new_password, salt)
+                       await UserModel.findByIdAndUpdate(req.user._id,{
+                           "local.password":password
+                       },(error,user)=>{
+                        //    
+                        if(user){
+                            successArray.push("cap nhap mat khau thanh cong")
+                            req.flash("success", successArray);
+                        }
+                       })
+                   
+
+                    }
+                    else 
+                    {
+                        successArray.push("mat khau khong hop ly")
+                        req.flash("success", successArray);
+                    }
+                }
+                else{
+                  successArray.push("mat khau confim chua dung")
+                  req.flash("success", successArray);
+                 
+                }
+            }
+            else {
+            
+         successArray.push("mat khau khong dung")
+         req.flash("success", successArray);
+        
+          
+            }
+        });
+
+       }) 
+    })
+    // userModel.find({
+    //     password: bcrypt.compare( hash, function(err, result) {
+    // }).then(
+    //     data=>{
+    //         console.log(data)
+    //     }
+    // )
+}
+
 module.exports={
     updateAvatar:updateAvatar,
-    updateInfo :updateInfo
+    updateInfo :updateInfo,
+    changePassword:changePassword
 }
