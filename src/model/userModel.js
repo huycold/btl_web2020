@@ -6,28 +6,39 @@ mongoose.connect("mongodb://localhost/data", {
 });
 let Schema = mongoose.Schema;
 let UserSchema = new Schema({
+  _id:{
+    type:Schema.Types.ObjectId
+  },
   username: String,
   gender: { type: String, default: "male" },
   phone: { type: Number, default: null },
   address: { type: String, default: null },
   avatar: { type: String, default: "avatar-default.jpg" },
   role: { type: String, default: "user" },
+  listRoom :{
+    type:Array
+  },
+  card :{
+    type:String,default:null
+  },
+  birthday:{
+    type:Date,default:null
+  },
+  like :[
+    {type: Schema.Types.ObjectId, ref: 'post' }
+  ],
+  comment:{
+    type:Array,
+    ref:"comment"
+  },
+  
   local: {
     email: { type: String, trim: true },
     password: String,
     isActive: { type: Boolean, default: false },
     verifyToken: String,
   },
-  facebook: {
-    uid: String,
-    token: String,
-    email: { type: String, trim: true },
-  },
-  google: {
-    uid: String,
-    token: String,
-    email: { type: String, trim: true },
-  },
+ 
   createdAt: { type: Number, default: Date.now },
   updatedAt: { type: Number, defauld: null },
   deletedAt: { type: Number, default: null },
@@ -79,6 +90,7 @@ UserSchema.statics = {
       // hien thi ra cac thong tin tra ve cho client
       { _id: 1, username: 1, address: 1, avater: 1 }
     ).exec();
+    
   },
 };
 UserSchema.methods = {
@@ -86,10 +98,10 @@ UserSchema.methods = {
     return bcrypt.compare(password, this.local.password); // return promise so sanh password
   },
 };
-var UserModel = mongoose.model("user", UserSchema);
+var user = mongoose.model("user", UserSchema);
 
 // UserModel.find().then((data)=>{
 //     console.log(data)
 // })
-console.log(UserModel._id);
-module.exports = UserModel;
+
+module.exports = user;

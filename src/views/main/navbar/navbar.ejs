@@ -22,12 +22,14 @@
       <div class="col-sm-3 no-padding">
         <ul class="nav navbar-nav navbar-left no-padding-start">
           <li>
-            <input
-              type="text"
-              name="search"
-              class="searchBox"
-              placeholder="Tìm kiếm tên cuộc trò chuyện"
-            />
+            <div class="input-group col-md-12">
+              <input type="text" id="input-find-users-contact"class="form-control" placeholder="Nhập E-mail hoặc username..." />
+              <span class="input-group-btn">
+                  <button id="btn-find-users-contact" class="btn btn-lg" type="button">
+                      <i class="glyphicon glyphicon-search"></i>
+                  </button>
+              </span>
+          </div>
             <div id="search-results">
               <h3>Kết quả</h3>
               <div class="search_content">
@@ -99,11 +101,12 @@
           <li class="dropdown" id="dropdown-navbar-user" data-uid="user._id">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               <img
+              id="navbar-avatar"
                 class="avatar-small"
                 src="/images/users/<%= user.avatar%>"
                 alt=""
               />
-         <%= user.username %>
+        <span id ="navbar-username"> <%= user.username %></span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">

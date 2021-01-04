@@ -8,6 +8,7 @@ const getAuthController = (req, res) => {
     success: req.flash("success"),
   });
 };
+
 const postRegister = async (req, res) => {
   let errorArray = [];
   let successArray = [];
@@ -61,7 +62,9 @@ const getVerifyToken = async (req, res) => {
 };
 const getLogout  = (req,res)=>{
   req.logout();
-  req.flash("success","ban da logout thanh cong")
+  let successArray = [];
+  successArray.push("ban da logout thanh cong")
+  req.flash("success",successArray)
   res.redirect("/login-register")
 }
 const isCheckLogin =(req,res,next)=>{

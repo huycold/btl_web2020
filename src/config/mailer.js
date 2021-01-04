@@ -9,12 +9,12 @@ const sendMail = (to, subject, template) => {
     
     service: "gmail",
     auth: {
-      user: "",
-      pass: "",
+      user: "huycold1999@gmail.com",
+      pass: "Huy-1999",
     },
   });
   var mailOptions = {
-    from: "",
+    from: "huycold1999@gmail.com",
     to: to,
     subject: subject,
     text: template,

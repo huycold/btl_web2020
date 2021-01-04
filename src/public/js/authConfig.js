@@ -13,14 +13,13 @@ function showRegisterForm() {
 }
 function showRegisterHost(){
   $(".loginBox").fadeOut("fast", function () {
-    $(".registerHost").fadeIn("fast");
-    $(".login-footer").fadeOut("fast", function () {
-      $(".register-footer").fadeIn("fast");
+    $(".registerBoxHost").fadeIn("fast");
+    $(".login-footer-host").fadeOut("fast", function () {
+      $(".register-footer-host").fadeIn("fast");
     });
-    $(".modal-title").html("Đăng ký tài khoản chu phong");
+    $(".modal-title-host").html("Đăng ký tài khoản");
   });
-  $(".error").removeClass("alert alert-danger").html("");
-
+  $(".error-host").removeClass("alert alert-danger").html("");
 }
 function showLoginForm() {
   $("#loginModal .registerBox").fadeOut("fast", function () {
@@ -47,10 +46,7 @@ function openRegisterModal() {
     showRegisterForm();
   }, 230);
 }
-function openRegisterHost (){
-  setTimeout(function () {
-    $("#loginModal").modal("show");
-    showRegisterHost();
-  }, 230);
+function openRegisteHostModal (){
+ alert("sai")
 }
  

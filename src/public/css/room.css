@@ -1,0 +1,192 @@
+.main-info {
+    background-color: #ecf0f1;
+    margin-top: 10px;
+}
+
+.main-info .left-info {
+    background-color: #FFF;
+}
+
+
+.main-info .left-info p {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    color: #4d4dff;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+.social .pull-left p{
+    color: #33cc66;
+    font-weight:600;
+    font-size: 16px;
+}
+.social .pull-left span{
+    color: #212529;
+}
+
+.main-info .left-info p:hover {
+    color: #FF0047;
+}
+
+.main-info .address {
+    border-bottom: 1px solid #ecf0f1;
+    border-top: 1px solid #ecf0f1;
+}
+
+.main-info .tang {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .size {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .bed-room {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .vs {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .type {
+    border-bottom: 1px solid #ecf0f1;
+}
+.main-info .gia {
+    border-bottom: 1px solid #ecf0f1;
+}
+.main-info .soluongphong {
+    border-bottom: 1px solid #ecf0f1;
+}
+.main-info .chungchu {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.main-info .info-label {
+    border-radius: 0px;
+    border: none;
+    width: 100px;
+    height: 36px;
+    background-color: #ecf0f1;
+    padding: 6px 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.main-info .info-data {
+    border-radius: 0px;
+    border: none;
+    width: 180px;
+    height: 36px;
+    padding: 6px 0px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.main-info .info-contact .contact-label p {
+    font-size: 18px;
+    padding-left: 12px;
+    color: #2e3339;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.main-info .info-contact .contact-label p:hover {
+    color: #FF0047;
+}
+
+.main-info .info-contact .contact-label p span {
+    margin-top: 10px;
+}
+
+.main-info .info-contact .contact-label p span {
+    color: #33cc66;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.main-info .info-contact .contact-label p:hover span {
+    color: #FF0047;
+}
+
+.main-info .info-contact .chr {
+    padding: 0px 12px;
+}
+
+.main-info .info-contact .chr hr {
+    border-color: #33cc66;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-info .info-contact .info-price {
+    margin-bottom: 10px;
+}
+
+.main-info .info-contact .info-price p {
+    font-size: 16px;
+    padding-left: 12px;
+    color: #FF0047;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+
+
+.main-info .info-contact .info-boss {
+    margin-bottom: 10px;
+}
+
+.main-info .info-contact .info-boss p {
+    font-size: 14px;
+    padding-left: 12px;
+    color: #2e3339;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.main-info .info-contact .info-boss p:hover {
+    color: #FF0047;
+}
+
+.main-info .info-contact .info-boss p:hover span {
+    color: #FF0047;
+}
+
+.main-info .info-contact .info-boss p span {
+    color: #2e3339;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.main-info .info-contact .info-phone p {
+    font-size: 14px;
+    padding-left: 14px;
+    color: #2e3339;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.main-info .info-contact .info-phone p:hover {
+    color: #FF0047;
+}
+
+.main-info .info-contact .info-phone p:hover span {
+    color: #FF0047;
+}
+
+.main-info .info-contact .info-phone p span {
+    color: #2e3339;
+    margin-right: 13px;
+    font-size: 18px;
+}
+
+.main-info .info-contact .info-phone {
+    margin-bottom: 20px;
+}
+

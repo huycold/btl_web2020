@@ -11,6 +11,12 @@ let HostSchema = new Schema({
   address: { type: String, default: null },
   avatar: { type: String, default: "avatar-default.jpg" },
   role: { type: String, default: "admin" },
+  card :{
+    type:String
+  },
+  birthday:{
+    type:Date
+  },
   local: {
     email: { type: String, trim: true },
     password: String,
@@ -26,8 +32,23 @@ HostSchema.statics = {
     createNew(item) {
       return this.create(item);
     }
+    ,
+      updateUser(id, item) {
+        return this.findByIdAndUpdate(id, item).exec();
+      },
+      findByEmail(email) {
+        return this.findOne({ "local.email": email }).exec();
+      },
+      findUserById(_id) {
+        return this.findById(_id).exec();
+      }
 }
-var HostModel = mongoose.model("host", HostSchema);
+HostSchema.methods = {
+  comparePassword(password) {
+    return bcrypt.compare(password, this.local.password); // return promise so sanh password
+  },
+};
+var HostModel = mongoose.model("hosts", HostSchema);
 
 // UserModel.find().then((data)=>{
 //     console.log(data)
